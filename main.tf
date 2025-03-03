@@ -1,13 +1,9 @@
 provider "aws" {
-  region = "your-aws-region"  # Update with your preferred AWS region
+  region = "us-east-1"  # Update with your preferred AWS region
 }
 
 resource "aws_instance" "web" {
-  ami           = "Amazon-ami"  # ✅ Valid Amazon Linux 2 AMI for us-east-1 
-#To know valid amazon ami - (aws ec2 describe-images --owners amazon \
-  --filters "Name=name,Values=amzn2-ami-hvm-*-x86_64-gp2" \
-  --query "Images[*].[ImageId, Name, CreationDate]" \
-  --output table)
+  ami           = "ami-0c104f6f4a5d9d1d5"  # ✅ Valid Amazon Linux 2 AMI for us-east-1
 
   instance_type = "t2.micro"  # Free tier eligible instance type
   key_name      = aws_key_pair.deployer.key_name
