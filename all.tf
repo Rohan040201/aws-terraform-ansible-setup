@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = "your-aws-region"
 }
 
 # VPC
@@ -66,7 +66,7 @@ resource "aws_security_group" "sg" {
 
 # EC2 Instance
 resource "aws_instance" "web" {
-  ami           = "ami-0c55b159cbfafe1f0"
+  ami           = "valid-amis"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnet.id
   security_groups = [aws_security_group.sg.name]
@@ -89,8 +89,8 @@ resource "aws_db_instance" "rds" {
   engine              = "mysql"
   engine_version      = "8.0"
   instance_class      = "db.t2.micro"
-  username           = "admin"
-  password           = "password123"
+  username           = "admin" 
+  password           = "admin"
   skip_final_snapshot = true
   publicly_accessible = false
 }
